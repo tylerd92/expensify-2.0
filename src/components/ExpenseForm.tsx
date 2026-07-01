@@ -2,11 +2,32 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const ExpenseForm = ({ onSubmit }) => {
-  const [description, setDescription] = useState("");
-  const [amount, setAmount] = useState("");
-  const [note, setNote] = useState("");
-  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+type ExpenseFormProps = {
+  onSubmit: (expense: {
+    description: string;
+    amount: number;
+    note: string;
+    createdAt: number | null;
+  }) => void;
+  expense?: {
+    description: string;
+    amount: number;
+    note: string;
+    createdAt: number | null;
+  };
+};
+
+const ExpenseForm = ({ onSubmit, expense }: ExpenseFormProps) => {
+  const [description, setDescription] = useState(
+    expense ? expense.description : "",
+  );
+  const [amount, setAmount] = useState(
+    expense ? expense.amount.toString() : "",
+  );
+  const [note, setNote] = useState(expense ? expense.note : "");
+  const [selectedDate, setSelectedDate] = useState<Date | null>(
+    expense && expense.createdAt ? new Date(expense.createdAt) : new Date(),
+  );
   const [error, setError] = useState("");
 
   const onSubmitHandler = (e: React.SubmitEvent<HTMLFormElement>) => {
