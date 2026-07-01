@@ -1,19 +1,8 @@
 import ExpenseForm from "../components/ExpenseForm";
+import type Expense from "../types/Expense";
 
 type EditExpenseProps = {
-  expense: {
-    description: string;
-    amount: number;
-    note: string;
-    createdAt: number | null;
-  };
-}
-
-type Expense = {
-  description: string;
-  amount: number;
-  note: string;
-  createdAt: number | null;
+  expense: Expense;
 };
 
 const EditExpense = (props: EditExpenseProps) => {
