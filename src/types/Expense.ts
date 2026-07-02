@@ -1,8 +1,12 @@
-type Expense = {
+type ExpenseInput = {
   description: string;
   amount: number;
   note: string;
   createdAt: number | null;
 };
 
-export type { Expense as default };
+type Expense = ExpenseInput & {
+  id: string;
+};
+
+export type { Expense, ExpenseInput };

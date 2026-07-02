@@ -1,20 +1,11 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import type { ExpenseInput } from "../types/Expense";
 
 type ExpenseFormProps = {
-  onSubmit: (expense: {
-    description: string;
-    amount: number;
-    note: string;
-    createdAt: number | null;
-  }) => void;
-  expense?: {
-    description: string;
-    amount: number;
-    note: string;
-    createdAt: number | null;
-  };
+  onSubmit: (expense: ExpenseInput) => void;
+  expense?: ExpenseInput;
 };
 
 const ExpenseForm = ({ onSubmit, expense }: ExpenseFormProps) => {

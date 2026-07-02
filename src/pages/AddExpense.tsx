@@ -1,8 +1,8 @@
 import ExpenseForm from "../components/ExpenseForm";
-import type Expense from "../types/Expense";
+import type { ExpenseInput } from "../types/Expense";
 
 const AddExpense = () => {
-  const onSubmit = (expense: Expense) => {
+  const onSubmit = (expense: ExpenseInput) => {
     console.log("AddExpense -> onSubmit -> expense", expense);
   };
 
