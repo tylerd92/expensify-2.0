@@ -1,17 +1,36 @@
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase/firebase";
+import { useAuthStore } from "./store/authStore";
 import LoginPage from "./pages/LoginPage";
+import LoadingPage from "./pages/LoadingPage";
+import Header from "./components/Header";
+import ExpenseDashboard from "./pages/ExpenseDashboard";
 
 function App() {
+  const { user, isLoading, setUser, setLoading } = useAuthStore();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+      setLoading(false);
+    });
+
+    return unsubscribe;
+  }, [setUser, setLoading]);
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
+
+  if (!user) {
+    return <LoginPage />;
+  }
+
   return (
     <>
-      {/* <header>
-        <div className='content-container'>
-          <div className='header__content'>
-            <h1>Expensify</h1>
-            <button className='button button--link'>Logout</button>
-          </div>
-        </div>
-      </header> */}
-      <LoginPage />
+      <Header />
+      <ExpenseDashboard />
     </>
   );
 }

@@ -1,9 +1,8 @@
-import { useState } from "react";
 import ExpenseSummary from "./ExpenseSummary";
 
 const ExpenseDashboard = () => {
-  const [expenseCount, setExpenseCount] = useState(0);
-  const [expensesTotal, setExpensesTotal] = useState(0);
+  const expenseCount = 0;
+  const expensesTotal = 0;
 
   return (
     <>
