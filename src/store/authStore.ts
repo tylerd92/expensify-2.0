@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import type { User } from "firebase/auth";
-import { loginWithGoogle, logout } from "../firebase/auth";
+import { loginWithGoogle, logout as firebaseLogout } from "../firebase/auth";
 
 type AuthState = {
   user: User | null;
@@ -18,7 +18,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     await loginWithGoogle();
   },
   logout: async () => {
-    await logout();
+    await firebaseLogout();
     set({ user: null });
   },
   setUser: (user) => set({ user }),
