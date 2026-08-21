@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";
 
 const Header = () => {
@@ -7,7 +8,9 @@ const Header = () => {
     <header className='header'>
       <div className='content-container'>
         <div className='header__content'>
-          <h1>Expensify</h1>
+          <Link to='/' className='header__title'>
+            <h1>Expensify</h1>
+          </Link>
           <button className='button button--link' onClick={logout}>
             Logout
           </button>

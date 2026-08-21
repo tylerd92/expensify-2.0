@@ -13,7 +13,7 @@ const ExpenseForm = ({ onSubmit, expense }: ExpenseFormProps) => {
     expense ? expense.description : "",
   );
   const [amount, setAmount] = useState(
-    expense ? expense.amount.toString() : "",
+    expense ? (expense.amount / 100).toFixed(2) : "",
   );
   const [note, setNote] = useState(expense ? expense.note : "");
   const [selectedDate, setSelectedDate] = useState<Date | null>(
@@ -30,7 +30,7 @@ const ExpenseForm = ({ onSubmit, expense }: ExpenseFormProps) => {
       setError("");
       onSubmit({
         description,
-        amount: parseFloat(amount),
+        amount: Math.round(parseFloat(amount) * 100),
         note,
         createdAt: selectedDate ? selectedDate.getTime() : null,
       });
@@ -50,8 +50,14 @@ const ExpenseForm = ({ onSubmit, expense }: ExpenseFormProps) => {
       <input
         type='text'
         placeholder='Amount'
+        inputMode='decimal'
         value={amount}
-        onChange={(e) => setAmount(e.target.value)}
+        onChange={(e) => {
+          const value = e.target.value;
+          if (value === '' || /^\d+\.?\d{0,2}$/.test(value)) {
+            setAmount(value);
+          }
+        }}
       />
       <textarea
         placeholder='Add a note for your expense (optional)'
@@ -63,6 +69,7 @@ const ExpenseForm = ({ onSubmit, expense }: ExpenseFormProps) => {
         toggleCalendarOnIconClick
         selected={selectedDate}
         onChange={setSelectedDate}
+        popperPlacement='bottom-start'
       />
       <button>Add Expense</button>
     </form>
