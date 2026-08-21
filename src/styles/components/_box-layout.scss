@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use '../base/settings' as *;
+
 .box-layout {
   align-items: center;
   background: url('/images/bg.jpg');
@@ -9,7 +12,7 @@
 }
 
 .box-layout__box {
-  background: fade-out(white, .15);
+  background: color.adjust(white, $alpha: -0.15);
   border-radius: 3px;
   padding: $l-size $m-size;
   text-align: center;

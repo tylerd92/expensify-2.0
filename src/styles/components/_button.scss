@@ -1,3 +1,5 @@
+@use '../base/settings' as *;
+
 .button {
   background: $blue;
   border: none;

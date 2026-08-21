@@ -1,3 +1,5 @@
+@use '../base/settings' as *;
+
 .page-header {
   background: $off-white;
   margin-bottom: $l-size;

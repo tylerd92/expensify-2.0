@@ -1,3 +1,6 @@
+@use 'sass:math';
+@use '../base/settings' as *;
+
 .show-for-mobile {
   @media (min-width: $desktop-breakpoint) {
     display: none;

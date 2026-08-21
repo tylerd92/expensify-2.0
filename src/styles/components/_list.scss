@@ -1,6 +1,9 @@
+@use 'sass:color';
+@use '../base/settings' as *;
+
 .list-header {
   background: $off-white;
-  border: 1px solid darken($off-white, 7%);
+  border: 1px solid color.adjust($off-white, $lightness: -7%);
   color: $grey;
   display: flex;
   justify-content: space-between;
@@ -15,7 +18,7 @@
 }
 
 .list-item {
-  border: 1px solid darken($off-white, 7%);
+  border: 1px solid color.adjust($off-white, $lightness: -7%);
   border-top: none;
   color: $dark-grey;
   display: flex;

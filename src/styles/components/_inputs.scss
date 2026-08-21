@@ -1,3 +1,5 @@
+@use '../base/settings' as *;
+
 .text-input {
   border: 1px solid #cacccd;
   font-size: $font-size-large;
