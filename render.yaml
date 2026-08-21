@@ -2,7 +2,6 @@ services:
   - type: web
     runtime: static
     name: expensify-2-0
-    region: oregon
     branch: master
     buildCommand: npm ci && npm run build
     staticPublishPath: dist
